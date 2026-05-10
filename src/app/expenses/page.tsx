@@ -13,6 +13,7 @@ import { Modal } from '@/components/ui/Modal'
 import { Button } from '@/components/ui/Button'
 import { ToastContainer } from '@/components/ui/Toast'
 import { Plus } from 'lucide-react'
+import { ExportModal } from '@/components/expenses/ExportModal'
 
 export default function ExpensesPage() {
   const {
@@ -24,12 +25,12 @@ export default function ExpensesPage() {
     addExpense,
     updateExpense,
     deleteExpense,
-    exportToCSV,
   } = useExpenses()
 
   const { toasts, addToast, removeToast } = useToast()
 
   const [isAddOpen, setIsAddOpen] = useState(false)
+  const [isExportOpen, setIsExportOpen] = useState(false)
   const [editingExpense, setEditingExpense] = useState<Expense | undefined>()
   const [deletingExpense, setDeletingExpense] = useState<Expense | undefined>()
 
@@ -78,7 +79,7 @@ export default function ExpensesPage() {
         expenses={filteredExpenses}
         onEdit={setEditingExpense}
         onDelete={(id) => setDeletingExpense(expenses.find((e) => e.id === id))}
-        onExport={() => exportToCSV({ filtered: true })}
+        onExport={() => setIsExportOpen(true)}
         onAdd={() => setIsAddOpen(true)}
       />
 
@@ -103,6 +104,12 @@ export default function ExpensesPage() {
         expenseDescription={deletingExpense?.description ?? ''}
         onConfirm={handleDelete}
         onCancel={() => setDeletingExpense(undefined)}
+      />
+
+      <ExportModal
+        isOpen={isExportOpen}
+        onClose={() => setIsExportOpen(false)}
+        expenses={expenses}
       />
 
       <ToastContainer toasts={toasts} onRemove={removeToast} />

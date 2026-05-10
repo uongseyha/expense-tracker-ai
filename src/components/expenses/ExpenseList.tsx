@@ -39,7 +39,7 @@ export function ExpenseList({ expenses, onEdit, onDelete, onExport, onAdd }: Exp
         </p>
         <Button variant="secondary" size="sm" onClick={onExport}>
           <Download size={15} />
-          Export CSV
+          Export Data
         </Button>
       </div>
       <div className="overflow-x-auto">
