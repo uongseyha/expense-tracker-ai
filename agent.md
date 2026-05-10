@@ -1,3 +1,4 @@
+project MVP:
 I want you to create a modern, professional NextJS expense tracking application. Here's my vision:
 
 APPLICATION OVERVIEW:

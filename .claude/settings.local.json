@@ -10,7 +10,15 @@
       "Bash(npx tsc *)",
       "Bash(npm run *)",
       "Bash(del next.config.ts)",
-      "Bash(timeout 8)"
+      "Bash(timeout 8)",
+      "Bash(dir /s \"D:\\\\Udemy\\\\AI\\\\1-ai-builter-projects\\\\expense-tracker-ai\\\\src\")",
+      "Bash(findstr /E \"^[^\\\\.]*$|\\\\.tsx|\\\\.ts|\\\\.jsx|\\\\.js\")",
+      "Bash(git checkout *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(npm ls *)",
+      "Bash(node -e \"const j = require\\('jspdf'\\); console.log\\(Object.keys\\(j\\)\\)\")",
+      "Bash(node -e \"const at = require\\('jspdf-autotable'\\); console.log\\(Object.keys\\(at\\)\\)\")"
     ]
   }
 }
