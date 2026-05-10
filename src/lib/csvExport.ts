@@ -9,13 +9,13 @@ function escapeCSVField(value: string): string {
 }
 
 export function exportToCSV(expenses: Expense[], filename?: string): void {
-  const headers = ['Date', 'Description', 'Category', 'Amount (USD)']
+  const headers = ['Date', 'Category', 'Amount', 'Description']
 
   const rows = expenses.map((e) => [
     e.date,
-    escapeCSVField(e.description),
     e.category,
     (e.amount / 100).toFixed(2),
+    escapeCSVField(e.description),
   ])
 
   const csvContent =

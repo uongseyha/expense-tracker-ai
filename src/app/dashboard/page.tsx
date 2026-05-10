@@ -14,11 +14,11 @@ import { DeleteConfirmDialog } from '@/components/expenses/DeleteConfirmDialog'
 import { Modal } from '@/components/ui/Modal'
 import { Button } from '@/components/ui/Button'
 import { ToastContainer } from '@/components/ui/Toast'
-import { Plus } from 'lucide-react'
+import { Plus, Download } from 'lucide-react'
 import { format } from 'date-fns'
 
 export default function DashboardPage() {
-  const { expenses, stats, addExpense, updateExpense, deleteExpense } = useExpenses()
+  const { expenses, stats, addExpense, updateExpense, deleteExpense, exportToCSV } = useExpenses()
   const { toasts, addToast, removeToast } = useToast()
   const [isAddOpen, setIsAddOpen] = useState(false)
   const [editingExpense, setEditingExpense] = useState<Expense | undefined>()
@@ -52,10 +52,16 @@ export default function DashboardPage() {
         title="Dashboard"
         subtitle={currentMonth}
         action={
-          <Button onClick={() => setIsAddOpen(true)}>
-            <Plus size={16} />
-            Add Expense
-          </Button>
+          <div className="flex gap-2">
+            <Button variant="secondary" onClick={() => exportToCSV({ filtered: false })}>
+              <Download size={16} />
+              Export Data
+            </Button>
+            <Button onClick={() => setIsAddOpen(true)}>
+              <Plus size={16} />
+              Add Expense
+            </Button>
+          </div>
         }
       />
 
