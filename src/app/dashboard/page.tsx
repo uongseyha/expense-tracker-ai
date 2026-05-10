@@ -14,13 +14,15 @@ import { DeleteConfirmDialog } from '@/components/expenses/DeleteConfirmDialog'
 import { Modal } from '@/components/ui/Modal'
 import { Button } from '@/components/ui/Button'
 import { ToastContainer } from '@/components/ui/Toast'
-import { Plus } from 'lucide-react'
+import { Plus, Cloud } from 'lucide-react'
 import { format } from 'date-fns'
+import { CloudExportHub } from '@/components/exports/CloudExportHub'
 
 export default function DashboardPage() {
   const { expenses, stats, addExpense, updateExpense, deleteExpense } = useExpenses()
   const { toasts, addToast, removeToast } = useToast()
   const [isAddOpen, setIsAddOpen] = useState(false)
+  const [isExportHubOpen, setIsExportHubOpen] = useState(false)
   const [editingExpense, setEditingExpense] = useState<Expense | undefined>()
   const [deletingExpense, setDeletingExpense] = useState<Expense | undefined>()
 
@@ -52,10 +54,16 @@ export default function DashboardPage() {
         title="Dashboard"
         subtitle={currentMonth}
         action={
-          <Button onClick={() => setIsAddOpen(true)}>
-            <Plus size={16} />
-            Add Expense
-          </Button>
+          <div className="flex gap-2">
+            <Button variant="secondary" onClick={() => setIsExportHubOpen(true)}>
+              <Cloud size={16} />
+              Cloud Export
+            </Button>
+            <Button onClick={() => setIsAddOpen(true)}>
+              <Plus size={16} />
+              Add Expense
+            </Button>
+          </div>
         }
       />
 
@@ -97,6 +105,12 @@ export default function DashboardPage() {
         expenseDescription={deletingExpense?.description ?? ''}
         onConfirm={handleDelete}
         onCancel={() => setDeletingExpense(undefined)}
+      />
+
+      <CloudExportHub
+        isOpen={isExportHubOpen}
+        onClose={() => setIsExportHubOpen(false)}
+        expenses={expenses}
       />
 
       <ToastContainer toasts={toasts} onRemove={removeToast} />
