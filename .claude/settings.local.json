@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(ls \"D:\\\\Udemy\\\\AI\\\\AI Coder - Vibe Coder\\\\expense-tracker-ai\" | ForEach-Object { $_.Name })",
+      "PowerShell(head *)",
+      "PowerShell(tree \"D:\\\\Udemy\\\\AI\\\\AI Coder - Vibe Coder\\\\expense-tracker-starter\" -L 3 -I 'node_modules|dist' 2>/dev/null || Get-ChildItem -Path \"D:\\\\Udemy\\\\AI\\\\AI Coder - Vibe Coder\\\\expense-tracker-starter\" -Recurse -Exclude 'node_modules', 'dist', 'dist-ssr' | ForEach-Object { if \\($_.PSIsContainer\\) { Write-Host \"📁 $_\" } else { Write-Host \"📄 $_\" } })",
+      "PowerShell(ls -Path \"D:\\\\Udemy\\\\AI\\\\AI Coder - Vibe Coder\\\\expense-tracker-starter\" | ForEach-Object { if \\($_.Name -ne 'node_modules'\\) { $_.Name } }; Write-Host \"\"; Write-Host \"src/\"; ls -Path \"D:\\\\Udemy\\\\AI\\\\AI Coder - Vibe Coder\\\\expense-tracker-starter\\\\src\" | ForEach-Object { \"  \" + $_.Name })",
+      "Bash(npx create-next-app@14 . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --yes)",
+      "Bash(npm install *)",
+      "Bash(npx tsc *)",
+      "Bash(npm run *)",
+      "Bash(del next.config.ts)",
+      "Bash(timeout 8)"
+    ]
+  }
+}
